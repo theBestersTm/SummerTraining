@@ -1,4 +1,5 @@
 import Controller.MyController;
+import Model.GameAlgorithm;
 
 import java.util.Scanner;
 
@@ -7,10 +8,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         MyController myController = new MyController();
+        GameAlgorithm gameAlgorithm = new GameAlgorithm();
+        int rand = gameAlgorithm.yourRandomNumber();
+        while (!myController.startGame(input.nextLine(), rand)) {}
 
-        while (!myController.startGame(input.nextLine())) {}
-
-        System.out.println("Hello world");
+        System.out.println("You won");
     }
 
 }

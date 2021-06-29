@@ -8,15 +8,20 @@ public class GameAlgorithm implements ShowResult {
 
     private final ArrayList<Integer> userHistory = new ArrayList<>();
 
-    public boolean gameAlgorithm(int userNumber) {
-        int randomNumber = yourRandomNumber();
+
+    public boolean gameAlgorithm(int userNumber, int randomNumber) {
+
 
         userHistory.add(userNumber);
+
         if (userNumber > randomNumber) {
+            printUserHistory();
             printBiggerResponse(userNumber);
         } else if (userNumber < randomNumber) {
+            printUserHistory();
+
             printSmallerRepsonse(userNumber);
-        } else {
+        } else if(userNumber == randomNumber) {
             return true;
         }
         return false;
@@ -27,8 +32,9 @@ public class GameAlgorithm implements ShowResult {
     }
 
     public void printUserHistory() {
-        System.out.println("Your previous attempts: ");
-        userHistory.forEach(System.out::print);
+        System.out.print("Your previous attempts: ");
+
+        userHistory.forEach((k)->System.out.print(k + " ") );
     }
 
     @Override
@@ -37,10 +43,10 @@ public class GameAlgorithm implements ShowResult {
     }
 
     public void printBiggerResponse(int bigger) {
-        System.out.println("Your number is bigger " + bigger + " than random number");
+        System.out.println("\nYour number is bigger " + bigger + " than random number");
     }
 
     public void printSmallerRepsonse(int smaller) {
-        System.out.println("Your number is smaller " + smaller + " than random number");
+        System.out.println("\nYour number is smaller " + smaller + " than random number");
     }
 }
